@@ -5,7 +5,7 @@ In diesem Thema geht es darum, Nachrichten, die von einem Embeded-System an eine
 Der grundlegende Teil mit der Sensorerkennung und Übertragung des Signals wird in einer Theorieeinheit im Systemtechnikunterricht geleehrt. Auf den weiteren Teil wird in dieser Vertiefung eingegangen.
 
 ## Ziele
-Ziel ist es, bei einem Sensorinput am Embeded-Device, in dieser Übung wird mit einem Raspberry-Pi gearbeitet, eine Nachricht an einen Server zu schicken. Dieser empfängt die Nachricht, und sendet dann eine Notifizierung an das Smartphone.  
+Ziel ist es, bei einem Sensorinput am Embeded-Device eine Nachricht an einen Server zu schicken. Dieser empfängt die Nachricht, und sendet dann eine Notifizierung an das Smartphone.  
 Weiterführend könnte man dann auch eine Steuerung des Devices via Smartphone in Betracht ziehen.  
 
 Die Recherche zur Realisierung des Projekts ist auch ein Teil dieser Vertiefung.
