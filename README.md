@@ -10,3 +10,6 @@ Weiterführend könnte man dann auch eine Steuerung des Devices via Smartphone i
 
 Die Recherche zur Realisierung des Projekts ist auch ein Teil dieser Vertiefung.
 
+## Prerequisits
+
+Android Studio
