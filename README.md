@@ -16,3 +16,5 @@ Android Studio
 
 ## Recherche
 Um den Message Transfer vom Server zu Smartphone zu realisieren, kann FCM (Firebase Cloud Messaging), früher Google Cloud Messaging (veraltet), verwendet werden.
+
+### Alternativen
