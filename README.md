@@ -49,3 +49,4 @@ Jetzt macht man noch einen Gradle-Sync und dann sollte es rennen. (hopefully)
 ## Sources
 [1]  
 [2] https://console.firebase.google.com/u/0/  
+[3] https://medium.com/android-school/firebaseinstanceidservice-is-deprecated-50651f17a148  
