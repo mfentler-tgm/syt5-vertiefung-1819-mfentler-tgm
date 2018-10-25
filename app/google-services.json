@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "854925308109",
+    "firebase_url": "https://mein-vertiefungsprojekt-1.firebaseio.com",
+    "project_id": "mein-vertiefungsprojekt-1",
+    "storage_bucket": "mein-vertiefungsprojekt-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854925308109:android:aec8776522efbdb5",
+        "android_client_info": {
+          "package_name": "com.example.mario.fcmdemoproject1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "854925308109-nu32ufsrv2n8vtdvmmfe36ti2n84iujj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMYZoprnZELJcX7H28Ur2jUQcmuyyJYDw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
