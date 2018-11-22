@@ -63,4 +63,5 @@ Dieses JSON File sollte man sicher abspeichern!
 [2] [https://console.firebase.google.com/u/0/](https://console.firebase.google.com/u/0/)  
 [3] [https://medium.com/android-school/firebaseinstanceidservice-is-deprecated-50651f17a148](https://medium.com/android-school/firebaseinstanceidservice-is-deprecated-50651f17a148)  
 [4] [https://medium.com/@srinuraop/sending-messages-from-app-server-to-clients-using-fcm-b2a471fc3e33](https://medium.com/@srinuraop/sending-messages-from-app-server-to-clients-using-fcm-b2a471fc3e33)  
-[5] [http://www.zoftino.com/android-notification-data-messages-from-app-server-using-firebase-cloud-messaging#app-server-to-fcm-server](http://www.zoftino.com/android-notification-data-messages-from-app-server-using-firebase-cloud-messaging#app-server-to-fcm-server)
+[5] [http://www.zoftino.com/android-notification-data-messages-from-app-server-using-firebase-cloud-messaging#app-server-to-fcm-server](http://www.zoftino.com/android-notification-data-messages-from-app-server-using-firebase-cloud-messaging#app-server-to-fcm-server)  
+[6] [https://www.techotopia.com/index.php/Sending_Firebase_Cloud_Messages_from_a_Node.js_Server](https://www.techotopia.com/index.php/Sending_Firebase_Cloud_Messages_from_a_Node.js_Server)
