@@ -53,7 +53,10 @@ Jetzt macht man noch einen Gradle-Sync und dann sollte es rennen.
 Manuell kann man Nachrichten aus der Firebase-Console an das Smartphone versenden. Dazu wählt man in der Firebase-Console "Firebase-CloudMessaging" aus, das gewünschte Projekt, verfasst eine Nachricht und wählt schlussendlich die Devices aus, die die Nachricht empfangen sollen.
 
 ### Nachrichten vom HTTP Server verschicken
-Die Firebase-CloudMessaging Server senden Nachrichten an die Clients, die sie von 
+Die Firebase-CloudMessaging Server senden Nachrichten an die Clients. Um selber die Nachrichten zu versenden, ohne dazu in die Firebase-Console gehen zu müssen, kann man über einen XMPP oder HTTP Server die Nachricht an die Firebase Server senden.  
+Dazu muss man für den HTTP Server einen privaten Server-Key erstellen. Um das zu tun geht man in die Firebaseconsole, ins Projekt, klickt auf das Zahnrad um die Einstellungen aufzurufen, Dienstkonten, neuen privaten Schlüssel generieren.  
+
+Dieses JSON File sollte man sicher abspeichern!
 
 ## Sources
 [1] [https://firebase.google.com/docs/cloud-messaging/](https://firebase.google.com/docs/cloud-messaging/)  
