@@ -1,0 +1,14 @@
+{
+  "name": "firebasefcm",
+  "version": "1.0.0",
+  "description": "Server for testing Firebase FCM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mario Fentler",
+  "license": "ISC",
+  "dependencies": {
+    "firebase-admin": "^6.2.0"
+  }
+}
