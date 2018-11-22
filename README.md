@@ -1,5 +1,5 @@
 # _IOT-Smartphone Einbindung_
-[https://v2.overleaf.com/project/5bb5baccd912b3352d0abc3c](Link zum Overleaf Protokoll)  
+[Link zum Overleaf Protokoll](https://v2.overleaf.com/project/5bb5baccd912b3352d0abc3c)  
 
 
 ## Einleitung
@@ -14,14 +14,14 @@ Die Recherche zur Realisierung des Projekts ist auch ein Teil dieser Vertiefung.
 
 ## Projektvoraussetzungen
 
-[https://developer.android.com/studio/](Android Studio)
+[Android Studio](https://developer.android.com/studio/)
 
 ## Recherche
 Um den Message Transfer vom Server zu Smartphone zu realisieren, kann FCM (Firebase Cloud Messaging), früher Google Cloud Messaging (veraltet), verwendet werden.
 
 ### Alternativen
 Firebase ist die am weitesten verbreitete und ausgereifste Solution. Allerdings gibt es auch Alternativen dazu, die man auch eventuell nehmen könnte.  
-[https://blog.back4app.com/2018/01/12/firebase-alternatives/](Alternatives).  
+[Alternatives](https://blog.back4app.com/2018/01/12/firebase-alternatives/).  
 Man könnte es auch mit Plain JavaScript nachbauen. Das wäre genauso kostenlos, würde aber mehr Zeit in Anspruch nehmen.  
 
 ## SetUp FCM
