@@ -12,16 +12,17 @@ Weiterführend könnte man dann auch eine Steuerung des Devices via Smartphone i
 
 Die Recherche zur Realisierung des Projekts ist auch ein Teil dieser Vertiefung.
 
-## Prerequisits
+## Projektvoraussetzungen
 
-Android Studio
+[https://developer.android.com/studio/](Android Studio)
 
 ## Recherche
 Um den Message Transfer vom Server zu Smartphone zu realisieren, kann FCM (Firebase Cloud Messaging), früher Google Cloud Messaging (veraltet), verwendet werden.
 
 ### Alternativen
 Firebase ist die am weitesten verbreitete und ausgereifste Solution. Allerdings gibt es auch Alternativen dazu, die man auch eventuell nehmen könnte.  
-https://blog.back4app.com/2018/01/12/firebase-alternatives/  
+[https://blog.back4app.com/2018/01/12/firebase-alternatives/](Alternatives).  
+Man könnte es auch mit Plain JavaScript nachbauen. Das wäre genauso kostenlos, würde aber mehr Zeit in Anspruch nehmen.  
 
 ## SetUp FCM
 Dies kann man entweder automatisch von Android Studio machen lassen (Tools/Firebase/Cloud Messaging) oder manuell machen.  
@@ -51,7 +52,12 @@ Jetzt macht man noch einen Gradle-Sync und dann sollte es rennen.
 ### Manuell
 Manuell kann man Nachrichten aus der Firebase-Console an das Smartphone versenden. Dazu wählt man in der Firebase-Console "Firebase-CloudMessaging" aus, das gewünschte Projekt, verfasst eine Nachricht und wählt schlussendlich die Devices aus, die die Nachricht empfangen sollen.
 
+### Nachrichten vom HTTP Server verschicken
+Die Firebase-CloudMessaging Server senden Nachrichten an die Clients, die sie von 
+
 ## Sources
-[1] https://firebase.google.com/docs/cloud-messaging/
-[2] https://console.firebase.google.com/u/0/  
-[3] https://medium.com/android-school/firebaseinstanceidservice-is-deprecated-50651f17a148  
+[1] [https://firebase.google.com/docs/cloud-messaging/](https://firebase.google.com/docs/cloud-messaging/)  
+[2] [https://console.firebase.google.com/u/0/](https://console.firebase.google.com/u/0/)  
+[3] [https://medium.com/android-school/firebaseinstanceidservice-is-deprecated-50651f17a148](https://medium.com/android-school/firebaseinstanceidservice-is-deprecated-50651f17a148)  
+[4] [https://medium.com/@srinuraop/sending-messages-from-app-server-to-clients-using-fcm-b2a471fc3e33](https://medium.com/@srinuraop/sending-messages-from-app-server-to-clients-using-fcm-b2a471fc3e33)  
+[5] [http://www.zoftino.com/android-notification-data-messages-from-app-server-using-firebase-cloud-messaging#app-server-to-fcm-server](http://www.zoftino.com/android-notification-data-messages-from-app-server-using-firebase-cloud-messaging#app-server-to-fcm-server)
