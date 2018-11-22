@@ -45,8 +45,13 @@ Als letztes im selben File ganz unten noch folgene Line einfügen, um das Gradle
 
     // ADD THIS AT THE BOTTOM
     apply plugin: 'com.google.gms.google-services'
-Jetzt macht man noch einen Gradle-Sync und dann sollte es rennen. (hopefully)
+Jetzt macht man noch einen Gradle-Sync und dann sollte es rennen.
+
+## Nachrichten an das Smartphone senden
+### Manuell
+Manuell kann man Nachrichten aus der Firebase-Console an das Smartphone versenden. Dazu wählt man in der Firebase-Console "Firebase-CloudMessaging" aus, das gewünschte Projekt, verfasst eine Nachricht und wählt schlussendlich die Devices aus, die die Nachricht empfangen sollen.
+
 ## Sources
-[1]  
+[1] https://firebase.google.com/docs/cloud-messaging/
 [2] https://console.firebase.google.com/u/0/  
 [3] https://medium.com/android-school/firebaseinstanceidservice-is-deprecated-50651f17a148  
