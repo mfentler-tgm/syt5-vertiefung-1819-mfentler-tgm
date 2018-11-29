@@ -58,6 +58,16 @@ Dazu muss man für den HTTP Server einen privaten Server-Key erstellen. Um das z
 
 Dieses JSON File sollte man sicher abspeichern!
 
+#### Registration Token
+Für die weiteren Schritte in diesem Tutorial braucht man den Registration Token der App:  
+https://www.techotopia.com/index.php/Sending_Firebase_Cloud_Messages_from_a_Node.js_Server  
+
+Hier wird erklärt wie man diesen bekommt.  
+https://www.techotopia.com/index.php/Firebase_Cloud_Messaging  
+
+Die Methode onTokenRefresh() wird nur aufgerufen wenn die App neu installiert wird auf dem Device! Wenn man den Registration Token so erhalten will geht das so:  
+https://stackoverflow.com/questions/37451395/firebase-ontokenrefresh-is-not-called
+
 ## Sources
 [1] [https://firebase.google.com/docs/cloud-messaging/](https://firebase.google.com/docs/cloud-messaging/)  
 [2] [https://console.firebase.google.com/u/0/](https://console.firebase.google.com/u/0/)  
