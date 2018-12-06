@@ -68,6 +68,20 @@ https://www.techotopia.com/index.php/Firebase_Cloud_Messaging
 Die Methode onTokenRefresh() wird nur aufgerufen wenn die App neu installiert wird auf dem Device! Wenn man den Registration Token so erhalten will geht das so:  
 https://stackoverflow.com/questions/37451395/firebase-ontokenrefresh-is-not-called
 
+#### Logcat am physical device
+Damit der Log auch auf meinem Huawei P9 angezeigt wird muss man das erst enablen. Dazu muss man am Telefon eine bestimmte Nummer "anrufen".  
+Die Schritte wie das funktioniert sind [hier](https://stackoverflow.com/questions/18124334/huawei-logcat-not-showing-the-log-for-my-app).
+
+## Node.js Messages senden
+[7], [6], [8]
+Mit dem File send.js werden die Nachrichten gesendet. Dann bekommt man eine Response ob es gesendet wurde.  
+
+![node response](documentationImages/sendingOverConsole.png)  
+
+Auf dem Device kann man eingehende Nachrichten loggen und bekommt folgendes Ergebnis:  
+
+![Log ergebnis](documentationImages/logcat.png)
+
 ## Sources
 [1] [https://firebase.google.com/docs/cloud-messaging/](https://firebase.google.com/docs/cloud-messaging/)  
 [2] [https://console.firebase.google.com/u/0/](https://console.firebase.google.com/u/0/)  
@@ -75,3 +89,6 @@ https://stackoverflow.com/questions/37451395/firebase-ontokenrefresh-is-not-call
 [4] [https://medium.com/@srinuraop/sending-messages-from-app-server-to-clients-using-fcm-b2a471fc3e33](https://medium.com/@srinuraop/sending-messages-from-app-server-to-clients-using-fcm-b2a471fc3e33)  
 [5] [http://www.zoftino.com/android-notification-data-messages-from-app-server-using-firebase-cloud-messaging#app-server-to-fcm-server](http://www.zoftino.com/android-notification-data-messages-from-app-server-using-firebase-cloud-messaging#app-server-to-fcm-server)  
 [6] [https://www.techotopia.com/index.php/Sending_Firebase_Cloud_Messages_from_a_Node.js_Server](https://www.techotopia.com/index.php/Sending_Firebase_Cloud_Messages_from_a_Node.js_Server)
+[7] [https://www.techotopia.com/index.php/Firebase_Cloud_Messaging](https://www.techotopia.com/index.php/Firebase_Cloud_Messaging)  
+[8] [https://stackoverflow.com/questions/18124334/huawei-logcat-not-showing-the-log-for-my-app](https://stackoverflow.com/questions/18124334/huawei-logcat-not-showing-the-log-for-my-app)  
+[9] [https://android.stackexchange.com/questions/69108/how-to-start-root-shell-with-android-studio](https://android.stackexchange.com/questions/69108/how-to-start-root-shell-with-android-studio)
