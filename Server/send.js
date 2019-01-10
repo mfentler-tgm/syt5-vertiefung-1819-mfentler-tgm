@@ -7,7 +7,8 @@ admin.initializeApp({
   databaseURL: "https://mein-vertiefungsprojekt-1.firebaseio.com"
 })
 
-var registrationToken = "fNAagkEyjDg:APA91bG7fdgYeCLPdkcH1uFi12GFis-cA7Pjaa_NSxUr8yrAVcQcJXNY5OeNtsw1PVW1q1zXcTqDhSgNc0HJbypw9q5aalEnBE7PWcbks4Cab9vhphIAXXBqS0KBvg6Zn-pkE2fr0jhO"
+//Huawei Device Reg Token, bekommen durch Installation der App
+var registrationToken = "f_QqegKt144:APA91bGriLphae5ZNbbK1FX8BSKZnBpTLy0kMfvofcLqarE8btq8tf3xJZEAjrvIUWP0Spv30PD1pTSxnXe4mynplbMmphiwrXchXpt67vsTCKzhqWx9pePpbR7KDm15hNTarvEbJOUH"
 
 var payload = {
   notification: {

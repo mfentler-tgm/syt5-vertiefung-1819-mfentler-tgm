@@ -68,19 +68,36 @@ https://www.techotopia.com/index.php/Firebase_Cloud_Messaging
 Die Methode onTokenRefresh() wird nur aufgerufen wenn die App neu installiert wird auf dem Device! Wenn man den Registration Token so erhalten will geht das so:  
 https://stackoverflow.com/questions/37451395/firebase-ontokenrefresh-is-not-called
 
+Um den Device Token vom Handy zu bekommen muss man Logcat erst am Telefon enablen. (siehe unten).
+Danach geht man in Android Studio und öffnet das Logcat Window so wie hier:  
+![logcat registration token](documentationImages/logcat2.PNG)  
+
+Der wird dort ausgegeben sobald man die App über Android Studio startet und sie dadurch auf dem Smartphone installiert wird. Danach bekommt man den Token im Logcat wie oben im Bild gezeigt.
+
 #### Logcat am physical device
-Damit der Log auch auf meinem Huawei P9 angezeigt wird muss man das erst enablen. Dazu muss man am Telefon eine bestimmte Nummer "anrufen".  
+Damit der Log auch auf meinem Huawei P9 angezeigt wird muss man das erst enablen. Dazu muss man am Telefon eine bestimmte Nummer "anrufen".  -> __\*#\*#2846579#\*#\*__  
 Die Schritte wie das funktioniert sind [hier](https://stackoverflow.com/questions/18124334/huawei-logcat-not-showing-the-log-for-my-app).
 
 ## Node.js Messages senden
+Den vorher erhaltenen Registration Token fügt man nun manuell in das Script ein.
+```node
+//Huawei Device Reg Token, bekommen durch Installation der App
+var registrationToken = "f_QqegKt144:APA91bGriLphae5ZNbbK1FX8BSKZnBpTLy0kMfvofcLqarE8btq8tf3xJZEAjrvIUWP0Spv30PD1pTSxnXe4mynplbMmphiwrXchXpt67vsTCKzhqWx9pePpbR7KDm15hNTarvEbJOUH"
+```
+
 [7], [6], [8]
 Mit dem File send.js werden die Nachrichten gesendet. Dann bekommt man eine Response ob es gesendet wurde.  
 
 ![node response](documentationImages/sendingOverConsole.PNG)  
 
-Auf dem Device kann man eingehende Nachrichten loggen und bekommt folgendes Ergebnis:  
+Auf dem Device kann man eingehende Nachrichten loggen und den Output nach __FirebaseMsgService__ filtern und bekommt folgendes Ergebnis:  
 
 ![Log ergebnis](documentationImages/logcat.PNG)
+
+Auch am Smartphone erhält man jetzt eine Message.  
+<center>
+<img src="documentationImages/huaweiMsg.png" width="200px" />
+</center>
 
 ## Sources
 [1] [https://firebase.google.com/docs/cloud-messaging/](https://firebase.google.com/docs/cloud-messaging/)  
