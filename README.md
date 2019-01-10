@@ -76,11 +76,11 @@ Die Schritte wie das funktioniert sind [hier](https://stackoverflow.com/question
 [7], [6], [8]
 Mit dem File send.js werden die Nachrichten gesendet. Dann bekommt man eine Response ob es gesendet wurde.  
 
-![node response](documentationImages/sendingOverConsole.png)  
+![node response](documentationImages/sendingOverConsole.PNG)  
 
 Auf dem Device kann man eingehende Nachrichten loggen und bekommt folgendes Ergebnis:  
 
-![Log ergebnis](documentationImages/logcat.png)
+![Log ergebnis](documentationImages/logcat.PNG)
 
 ## Sources
 [1] [https://firebase.google.com/docs/cloud-messaging/](https://firebase.google.com/docs/cloud-messaging/)  
