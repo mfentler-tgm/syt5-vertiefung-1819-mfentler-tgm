@@ -95,9 +95,9 @@ Auf dem Device kann man eingehende Nachrichten loggen und den Output nach __Fire
 ![Log ergebnis](documentationImages/logcat.PNG)
 
 Auch am Smartphone erhält man jetzt eine Message.  
-<center>
 <img src="documentationImages/huaweiMsg.png" width="200px" />
-</center>
+
+TODO: https://stackoverflow.com/questions/10996479/how-to-update-a-textview-of-an-activity-from-another-class
 
 ## Sources
 [1] [https://firebase.google.com/docs/cloud-messaging/](https://firebase.google.com/docs/cloud-messaging/)  
