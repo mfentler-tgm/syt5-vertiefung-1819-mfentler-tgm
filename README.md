@@ -97,7 +97,81 @@ Auf dem Device kann man eingehende Nachrichten loggen und den Output nach __Fire
 Auch am Smartphone erhält man jetzt eine Message.  
 <img src="documentationImages/huaweiMsg.png" width="200px" />
 
-TODO: https://stackoverflow.com/questions/10996479/how-to-update-a-textview-of-an-activity-from-another-class
+### Messages an Activity weiterleiten
+Damit man Methoden in der Main Activity erreichen kann, die dann den Text auf der GUI ändern, müssen diese über eine Instanz angesprochen werden. Activities erstellt man aber in einer anderen Klasse __NIE__ mit "new MainActivity()", da diese
+Activities einen gewissen Lebenszyklus haben und man das so einfach nicht macht. Stattdessen holt man sich einfach nur eine Instanz davon [10]: 
+```java
+MainActivity.getInstance().updateMsgCounter("title", remoteMessage.getData().get("title"));
+```
+## Notification vs Data
+Es gibt zwei verschiedene Arten Notfications zu verschicken. Einmal als "Notification" und einmal als "Data".  
+
+Beim Ersten bekommt man die Nachrichten nur, wenn die App im Hintergrund ist. Da sie im Hintergrund von Google gemanaged wird. Sobald die App im Vordergrund ist, wird die Methode onMessageReceived aufgerufen. Da dort aber noch nicht viel steht wird auch nicht viel passieren.  
+
+Bei der zweiten Art, werden die Notifications immer an die Methode __onMessageReceived()__ weitergeleitet. Egal ob die App im Vorder- oder im Hintergrund ist. Daher müssen wir uns selber darum kümmern, dass eine Push-Notification erstellt wird.  
+
+Woraruf man beim Senden der Nachricht noch achten muss, ist dass man als Key "data" anstatt von "notification" verwendet.  
+
+In der Java Funktion erstellt man die Notificiation dann selbst so:  
+```java
+/** Source: https://stackoverflow.com/a/38451582 */
+Intent intent = new Intent(this, MainActivity.class);
+intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+String channelId = "Default";
+NotificationCompat.Builder builder = new  NotificationCompat.Builder(this, channelId)
+        .setSmallIcon(R.mipmap.ic_launcher)
+        .setContentTitle(remoteMessage.getData().get("title"))
+        .setContentText(remoteMessage.getData().get("body"))
+        .setAutoCancel(true)
+        .setContentIntent(pendingIntent);
+NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+    NotificationChannel channel = new NotificationChannel(channelId, "Default channel", NotificationManager.IMPORTANCE_DEFAULT);
+    manager.createNotificationChannel(channel);
+}
+manager.notify(0, builder.build());
+```
+### Nachrichten in der App anzeigen
+Damit die Nachrichten dann auch auf der GUI angezeigt werden, muss man auf die Methode in der MainActivity zugreifen (vorher erklärt). Als Parameter werden der ein Key/Value Paar übergeben. Die Methode setzt dann die Werte dementsprechend.
+```java
+MainActivity.getInstance().updateMsgCounter("title", remoteMessage.getData().get("title"));
+MainActivity.getInstance().updateMsgCounter("body", remoteMessage.getData().get("body"));
+MainActivity.getInstance().updateMsgCounter("counter", "increase");
+```
+
+Die Methode in der MainActivity wurde von mir erstellt. Sie setzt einfach Variablen, die nachher für die Anzeige verwendet werden.
+```java
+@Override
+    public void updateMsgCounter(String key, String value){
+        if(key.equals("title")){
+            msgTitle = value;
+        }else if(key.equals("body")){
+            msgBody = value;
+        }else if(key.equals("counter")){
+            msgCounter = msgCounter + 1;
+        }
+    }
+```
+
+## Update der UI
+Mit den Methoden __"onStart()"__ und __"onUpdate()"__, kann das Event des Öffnens der App abgefangen werden und die UI Elemente gesetzt werden.  
+```java
+@Override
+protected void onStart(){
+    super.onStart();
+
+    ((TextView)findViewById(R.id.msgCounterText)).setText(msgCounter + "");
+    if(msgTitle != null)
+        ((TextView)findViewById(R.id.title)).setText(msgTitle + "");
+    if(msgBody != null)
+        ((TextView)findViewById(R.id.body)).setText(msgBody + "");
+
+}
+```
+
+## Ergebnis
+Wenn man nun die App sieht man den Titel und den Inhalt der letzten Notification. Das kann man natürlich beliebig ändern und somit alles mögliche mit Hilfe von Notifications and das Smartphone senden und anzeigen.
 
 ## Sources
 [1] [https://firebase.google.com/docs/cloud-messaging/](https://firebase.google.com/docs/cloud-messaging/)  
@@ -108,4 +182,5 @@ TODO: https://stackoverflow.com/questions/10996479/how-to-update-a-textview-of-a
 [6] [https://www.techotopia.com/index.php/Sending_Firebase_Cloud_Messages_from_a_Node.js_Server](https://www.techotopia.com/index.php/Sending_Firebase_Cloud_Messages_from_a_Node.js_Server)
 [7] [https://www.techotopia.com/index.php/Firebase_Cloud_Messaging](https://www.techotopia.com/index.php/Firebase_Cloud_Messaging)  
 [8] [https://stackoverflow.com/questions/18124334/huawei-logcat-not-showing-the-log-for-my-app](https://stackoverflow.com/questions/18124334/huawei-logcat-not-showing-the-log-for-my-app)  
-[9] [https://android.stackexchange.com/questions/69108/how-to-start-root-shell-with-android-studio](https://android.stackexchange.com/questions/69108/how-to-start-root-shell-with-android-studio)
+[9] [https://android.stackexchange.com/questions/69108/how-to-start-root-shell-with-android-studio](https://android.stackexchange.com/questions/69108/how-to-start-root-shell-with-android-studio)  
+[10] [https://stackoverflow.com/questions/17315842/how-to-call-a-method-in-mainactivity-from-another-class](https://stackoverflow.com/questions/17315842/how-to-call-a-method-in-mainactivity-from-another-class)  

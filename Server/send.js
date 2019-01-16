@@ -8,12 +8,21 @@ admin.initializeApp({
 })
 
 //Huawei Device Reg Token, bekommen durch Installation der App
-var registrationToken = "dXNCm8isUVs:APA91bHN24S0iQtdG4OKSfg4zS10GWrZ-MhhVJgGYD0uuewu5Abqw26s2S4BknQmMNqmCL8Qzhqu9CT_GCSl_DRkNFpko3vGad1mWn4wBsWhpaRSFQqxJmr6xulJrQ-IECpJ6S78YlL9"
+var registrationToken = "eDxOInCpvUc:APA91bG_tb1Oxfldyr5spZCPkfCHTnkZmvlwC3bjgKYsZk2kIZeE1rXgZH5Hv0vx3NHGAU1Dz7N6eC5yqz279t5uXAGAulD1MtQABw4iYYqo3duT5ysj6ONmdSmuAdjpbePUmeI2wGnr"
+
+var date = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '')
+
+/**
+notification: {
+    title: "Message from Server",
+    body: "Your Server has sent you a new message, check it out!"
+  },
+*/
 
 var payload = {
-  notification: {
-    title: "Message from NodeJS",
-    body: "It works"
+  data: {
+	  title: "Latest Message from Server:",
+	  body: "if you see this it is working\n" + date
   }
 }
 

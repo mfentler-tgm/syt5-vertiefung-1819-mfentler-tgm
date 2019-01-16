@@ -28,6 +28,7 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-core:16.0.4'
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
+
 }
 
 // ADD THIS AT THE BOTTOM

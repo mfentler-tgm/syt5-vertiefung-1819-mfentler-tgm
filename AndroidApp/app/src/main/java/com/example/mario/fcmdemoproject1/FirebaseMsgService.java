@@ -1,50 +1,48 @@
 package com.example.mario.fcmdemoproject1;
 
-import android.content.Context;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.*;
+import android.os.Build;
+
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-import org.w3c.dom.Text;
 
 public class FirebaseMsgService extends FirebaseMessagingService {
 
     private static final String TAG = "FirebaseMsgService";
-    private Context context;
-
-
-    public FirebaseMsgService() {
-        this.context = context;
-    }
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
+        super.onMessageReceived(remoteMessage);
 
-        //msgCounter ++;
-
-        Log.d(TAG, "From: " + remoteMessage.getFrom());
-
-        if (remoteMessage.getNotification() != null) {
-            ma.changeCounterText("geht");
-            //String title = remoteMessage.getNotification().getTitle();
-            //String body = remoteMessage.getNotification().getBody();
-
-            //Log.d(TAG,"Notification Counter: " + msgCounter + "");
-            //ma.changeCounterText(msgCounter + "");
-
-            Log.d(TAG, "Notification Title: " +
-                    remoteMessage.getNotification().getTitle());
-
-            Log.d(TAG, "Notification Message: " +
-                    remoteMessage.getNotification().getBody());
+        /** Source: https://stackoverflow.com/a/38451582 */
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+        String channelId = "Default";
+        NotificationCompat.Builder builder = new  NotificationCompat.Builder(this, channelId)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle(remoteMessage.getData().get("title"))
+                .setContentText(remoteMessage.getData().get("body"))
+                .setAutoCancel(true)
+                .setContentIntent(pendingIntent);
+        NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(channelId, "Default channel", NotificationManager.IMPORTANCE_DEFAULT);
+            manager.createNotificationChannel(channel);
         }
+        manager.notify(0, builder.build());
 
-
-        if (remoteMessage.getData().size() > 0) {
-            Log.d(TAG, "Message data payload: " +
-                    remoteMessage.getData().get("MyKey1"));
-        }
+        MainActivity.getInstance().updateMsgCounter("title", remoteMessage.getData().get("title"));
+        MainActivity.getInstance().updateMsgCounter("body", remoteMessage.getData().get("body"));
+        MainActivity.getInstance().updateMsgCounter("counter", "increase");
 
     }
 }
