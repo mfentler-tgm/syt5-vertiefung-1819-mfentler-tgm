@@ -30,7 +30,7 @@ public class FirebaseMsgService extends FirebaseMessagingService {
         NotificationCompat.Builder builder = new  NotificationCompat.Builder(this, channelId)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(remoteMessage.getData().get("title"))
-                .setContentText(remoteMessage.getData().get("body"))
+                .setContentText(remoteMessage.getData().get("notificationBody"))
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent);
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);

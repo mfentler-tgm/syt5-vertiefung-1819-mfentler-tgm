@@ -19,10 +19,15 @@ notification: {
   },
 */
 
+var message = "Test Message!"
+if(process.argv[2] != null)
+	message = process.argv[2]
+
 var payload = {
   data: {
 	  title: "Latest Message from Server:",
-	  body: "if you see this it is working\n" + date
+	  "notificationBody": "Open your app to see it",
+	  body: message + "\n" + date
   }
 }
 
