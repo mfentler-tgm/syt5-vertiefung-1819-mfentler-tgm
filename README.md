@@ -168,6 +168,8 @@ protected void onStart(){
         ((TextView)findViewById(R.id.body)).setText(msgBody + "");
 
 }
+
+__UM NEUE SACHEN IN DER UI hinzuzufügen braucht man einen bestimmten Thread, siehe ![hier](https://stackoverflow.com/questions/5161951/android-only-the-original-thread-that-created-a-view-hierarchy-can-touch-its-vi/5162096#5162096)__
 ```
 
 ## Ergebnis
