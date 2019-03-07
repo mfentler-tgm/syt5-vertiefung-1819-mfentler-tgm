@@ -1,6 +1,5 @@
 package com.example.mario.fcmdemoproject1;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -8,7 +7,6 @@ import android.content.*;
 import android.os.Build;
 
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -40,9 +38,7 @@ public class FirebaseMsgService extends FirebaseMessagingService {
         }
         manager.notify(0, builder.build());
 
-        MainActivity.getInstance().updateMsgCounter("title", remoteMessage.getData().get("title"));
-        MainActivity.getInstance().updateMsgCounter("body", remoteMessage.getData().get("body"));
-        MainActivity.getInstance().updateMsgCounter("counter", "increase");
+        MainActivity.getInstance().updateMsgList(remoteMessage.getData().get("title"),remoteMessage.getData().get("body"), true);
 
     }
 }
