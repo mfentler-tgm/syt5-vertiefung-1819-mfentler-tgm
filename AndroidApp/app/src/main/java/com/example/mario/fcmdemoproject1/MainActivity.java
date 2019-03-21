@@ -1,5 +1,6 @@
 package com.example.mario.fcmdemoproject1;
 
+import android.media.session.MediaSession;
 import android.util.Log;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +11,11 @@ import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.iid.FirebaseInstanceId;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements MyCallBack{
 
@@ -47,7 +52,8 @@ public class MainActivity extends AppCompatActivity implements MyCallBack{
         instance = this;
         try {
             String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-            Log.d("Firbase id login", "Refreshed token: " + refreshedToken);
+            Log.d("Firebase id login", "Refreshed token: " + refreshedToken);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -111,3 +117,12 @@ public class MainActivity extends AppCompatActivity implements MyCallBack{
     }
 
 }
+
+class TokenObject{
+    private String regToken;
+
+    public TokenObject(String token){
+        this.regToken = token;
+    }
+}
+

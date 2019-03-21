@@ -9,6 +9,7 @@
   "author": "Mario Fentler",
   "license": "ISC",
   "dependencies": {
-    "firebase-admin": "^6.2.0"
+    "firebase-admin": "^6.5.1",
+    "firebase-functions": "^2.2.1"
   }
 }
