@@ -1,39 +1,70 @@
+
 const admin = require("firebase-admin")
 
-var serviceAccount = require("../key/mein-vertiefungsprojekt-1-firebase-adminsdk-zqqo6-86d998d24f.json")
+var serviceAccount = require("../key/fcmdemoproject1-firebase-adminsdk-rcdjv-5ddbab0bca.json")
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://mein-vertiefungsprojekt-1.firebaseio.com"
+  databaseURL: "https://fcmdemoproject1.firebaseio.com"
 })
+
 var db = admin.firestore()
 
+var allToken = []
 
-var allToken = db.collection('regDevice').doc('regDocument').collection('allRegDevices').get()
-  .then(snapshot => {
-    snapshot.forEach(doc => {
-      console.log(doc.id, '=>', doc.data())
-    });
-  })
-  .catch(err => {
-    console.log('Error getting documents', err)
-  })
+function getToken(){
+	db.collection('regDevice').doc('regDocument').collection('allRegDevices').get()
+		.then(snapshot => {
+			snapshot.forEach(doc => {
+			  allToken.push(doc.data().regToken)
+			  console.log('pushed element: ' + doc.data().regToken)
+			})
+		})
+		.catch(err => {
+			console.log('Error getting documents', err)
+		})
+}
+if(process.argv[2] != null)
+	allToken.push(process.argv[2])
+else
+	getToken()
 
-//Huawei Device Reg Token, bekommen durch Installation der App
-var registrationToken = "eDxOInCpvUc:APA91bG_tb1Oxfldyr5spZCPkfCHTnkZmvlwC3bjgKYsZk2kIZeE1rXgZH5Hv0vx3NHGAU1Dz7N6eC5yqz279t5uXAGAulD1MtQABw4iYYqo3duT5ysj6ONmdSmuAdjpbePUmeI2wGnr"
+var delay = ( function() {
+    var timer = 0;
+    return function(callback, ms) {
+        clearTimeout (timer)
+        timer = setTimeout(callback, ms)
+    }
+})()
 
-var date = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '')
+delay(function(){
+    console.log("fertig gewartet")
+	allToken.forEach(token => {		
+		admin.messaging().sendToDevice(token, payload, options)
+		  .then(function(response) {
+			console.log("Successfully sent message:", response)
+			process.exit()
+		  })
+		  .catch(function(error) {
+			console.log("Error sending message:", error)
+			process.exit()
+		  })
+		
+	0})
+}, 10000 )
+
+
 
 /**
-notification: {
-    title: "Message from Server",
-    body: "Your Server has sent you a new message, check it out!"
-  },
+//Huawei Device Reg Token, bekommen durch Installation der App
+var registrationToken = "eDxOInCpvUc:APA91bG_tb1Oxfldyr5spZCPkfCHTnkZmvlwC3bjgKYsZk2kIZeE1rXgZH5Hv0vx3NHGAU1Dz7N6eC5yqz279t5uXAGAulD1MtQABw4iYYqo3duT5ysj6ONmdSmuAdjpbePUmeI2wGnr"
 */
+var date = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '')
+
 
 var message = "Test Message!"
-if(process.argv[2] != null)
-	message = process.argv[2]
+if(process.argv[3] != null)
+	message = process.argv[3]
 
 var payload = {
   data: {
@@ -47,14 +78,3 @@ var payload = {
   priority: "high",
   timeToLive: 60 * 60 * 24
 }
-/**
-admin.messaging().sendToDevice(registrationToken, payload, options)
-  .then(function(response) {
-    console.log("Successfully sent message:", response)
-    process.exit()
-  })
-  .catch(function(error) {
-    console.log("Error sending message:", error)
-    process.exit()
-  })
-  */
