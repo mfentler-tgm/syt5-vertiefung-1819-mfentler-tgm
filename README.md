@@ -181,6 +181,38 @@ Automatisches Registrieren des Devices mit seinem Reg-Token. Server von hardcode
 
 ## Implementierung
 ### Client
+Wenn eine Klasse die Klasse 'FirebaseInstanceIdService' extended, kann die Methode '@onTokenRefresh' verwendet werden.
+```java
+@Override
+public void onTokenRefresh() {
+    //Get the token from Firebase
+    String token = FirebaseInstanceId.getInstance().getToken();
+    Log.d(TAG, "Registration Token: = " + token);
+
+    sendRegistrationToServer(token);
+}
+```
+Danach wird der Token an den Firebase Server geschickt. Dazu wird die Methode 'add()' verwendet.
+```java
+FirebaseFirestore db = FirebaseFirestore.getInstance();
+db.collection("regDevice").document("regDocument").collection("allRegDevices").add(data)
+```
+Daran Success/Failure Listener anhängen
+```java
+.addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+    @Override
+    public void onSuccess(DocumentReference documentReference) {
+        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+    }
+})
+.addOnFailureListener(new OnFailureListener() {
+    @Override
+    public void onFailure(@NonNull Exception e) {
+        Log.w(TAG, "Error adding document", e);
+    }
+});
+```
+
 
 ### Server
 DB Referenz holen
