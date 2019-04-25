@@ -38,11 +38,10 @@ var delay = ( function() {
 })()
 
 delay(function(){
-    console.log("fertig gewartet")
 	allToken.forEach(token => {		
 		admin.messaging().sendToDevice(token, payload, options)
 		  .then(function(response) {
-			console.log("Successfully sent message:", response)
+			console.log("Successfully sent message")
 			process.exit()
 		  })
 		  .catch(function(error) {

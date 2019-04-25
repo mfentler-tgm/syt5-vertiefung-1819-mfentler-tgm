@@ -175,6 +175,70 @@ __UM NEUE SACHEN IN DER UI hinzuzufügen braucht man einen bestimmten Thread, si
 ## Ergebnis
 Wenn man nun die App sieht man den Titel und den Inhalt der letzten Notification. Das kann man natürlich beliebig ändern und somit alles mögliche mit Hilfe von Notifications and das Smartphone senden und anzeigen.
 
+# Vertiefung Teil 2
+## Ziel
+Automatisches Registrieren des Devices mit seinem Reg-Token. Server von hardcoded Messagetransfer auf automatischen ändern.
+
+## Implementierung
+### Client
+
+### Server
+DB Referenz holen
+```js
+const admin = require("firebase-admin")
+
+var serviceAccount = require("../key/fcmdemoproject1-firebase-adminsdk-rcdjv-5ddbab0bca.json")
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://fcmdemoproject1.firebaseio.com"
+})
+
+var db = admin.firestore()
+```
+Registered Device Tokens aus der DB auslesen
+```js
+function getToken(){
+	db.collection('regDevice').doc('regDocument').collection('allRegDevices').get()
+		.then(snapshot => {
+			snapshot.forEach(doc => {
+			  allToken.push(doc.data().regToken)
+			  console.log('pushed element: ' + doc.data().regToken)
+			})
+		})
+		.catch(err => {
+			console.log('Error getting documents', err)
+		})
+}
+```
+Delay definieren
+```js
+var delay = ( function() {
+    var timer = 0;
+    return function(callback, ms) {
+        clearTimeout (timer)
+        timer = setTimeout(callback, ms)
+    }
+})()
+```
+Nachricht an alle Devices schicken
+```js
+delay(function(){
+	allToken.forEach(token => {		
+		admin.messaging().sendToDevice(token, payload, options)
+		  .then(function(response) {
+			console.log("Successfully sent message")
+			process.exit()
+		  })
+		  .catch(function(error) {
+			console.log("Error sending message:", error)
+			process.exit()
+		  })
+		
+	0})
+}, 10000 )
+```
+
 ## Sources
 [1] [https://firebase.google.com/docs/cloud-messaging/](https://firebase.google.com/docs/cloud-messaging/)  
 [2] [https://console.firebase.google.com/u/0/](https://console.firebase.google.com/u/0/)  
